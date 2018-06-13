@@ -18,6 +18,9 @@
     "aws-sdk": "^2.240.1",
     "cjs-emitter": "^1.5.1",
     "commander": "^2.15.1",
-    "websocket": "^1.0.26"
+    "websocket": "^1.0.26",
+    "ws": "^5.2.0",
+    "axios": "^0.18.0",
+    "redis": "^2.8.0"
   }
 }
