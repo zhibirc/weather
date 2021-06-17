@@ -1,8 +1,8 @@
-# IDE
 .idea
+.env
 
-# Dependency directories
-node_modules
+public/node_modules
+public/dist
 
-# Builds
-build
+server/node_modules
+server/dist

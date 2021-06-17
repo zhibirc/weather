@@ -1,0 +1,3 @@
+```ts
+isEmpty === true
+```

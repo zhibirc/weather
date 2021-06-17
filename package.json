@@ -1,26 +1,13 @@
 {
-  "name": "weather",
-  "version": "1.0.0",
-  "description": "",
-  "preferGlobal": true,
-  "bin": {
-    "weather": "./bin/cli.js"
-  },
-  "main": "./lib/app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "aws-sdk": "^2.240.1",
-    "cjs-emitter": "^1.5.1",
-    "commander": "^2.15.1",
-    "websocket": "^1.0.26",
-    "ws": "^5.2.0",
-    "axios": "^0.18.0",
-    "redis": "^2.8.0"
-  }
+    "name": "weather",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {}
 }

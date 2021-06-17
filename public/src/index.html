@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather UI</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div class="app">
+            <input id="location" class="location-input" placeholder="Enter location name">
+            <button id="submit" class="submit-button">Get Weather</button>
+
+            <div id="data" class="weather-data-container hidden">
+                Overview:    <strong id="overview"></strong>
+                Temperature: <strong id="temperature"></strong> (feels like <strong id="feels-like"></strong>)
+                Wind speed:  <strong id="wind-speed"></strong>
+                Coordinates: <strong id="coordinates"></strong>
+            </div>
+        </div>
+
+    <script>
+        const API_SERVER_URL = 'http://127.0.0.1:8081';
+
+        const $location = document.getElementById('location');
+        const $submit = document.getElementById('submit');
+        const $data = document.getElementById('data');
+
+        const $overview = document.getElementById('overview');
+        const $temperature = document.getElementById('temperature');
+        const $feelsLike = document.getElementById('feels-like');
+        const $windSpeed = document.getElementById('wind-speed');
+        const $coordinates = document.getElementById('coordinates');
+
+        const isHidden = 'hidden';
+
+        function shake () {
+            let count = 10;
+
+            const id = setInterval(() => {
+                setTimeout(() => {
+                    $submit.style.marginRight = `-${count}px`;
+                    setTimeout(() => {
+                        $submit.style.marginRight = `${count * 2}px`;
+                        setTimeout(() => {
+                            $submit.style.marginRight = `-${count}px`;
+
+                            if ( !count ) {
+                                clearInterval(id);
+                            }
+
+                            --count;
+                        }, 10);
+                    }, 10);
+                }, 10);
+            }, 80);
+        }
+
+        async function getWeather ( location ) {
+            const response = await fetch(API_SERVER_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify({ location })
+            });
+
+            if ( response.ok ) {
+                return response.json();
+            }
+
+            return false;
+        }
+
+        $submit.addEventListener('click', async () => {
+            const location = $location.value.trim();
+
+            if ( location ) {
+                try {
+                    const {
+                        weatherData: {
+                            coord: {
+                                lon,
+                                lat
+                            },
+                            weather,
+                            main: {
+                                temp,
+                                feels_like
+                            },
+                            wind: {
+                                speed
+                            }
+                        },
+                        imageData
+                    } = await getWeather(location);
+
+                    if ( imageData ) {
+                        const image = imageData.photos[0];
+
+                        document.body.style.backgroundImage = `url(${image.src.original})`;
+                        $data.style.backgroundColor = image.avg_color;
+                    }
+
+                    $overview.textContent = `${weather[0].main}: ${weather[0].description}`;
+                    $temperature.textContent = `${Math.round(temp)}\u2103`;
+                    $feelsLike.textContent = `${Math.round(feels_like)}\u2103`;
+                    $windSpeed.textContent = `${speed}m/s`;
+                    $coordinates.textContent = `${lat}\u00B0 / ${lon}\u00B0`;
+
+                    setTimeout(() => {
+                        $data.classList.remove(isHidden);
+                    }, 0);
+                } catch ( error ) {
+                    console.error(`response handling error: ${error}`);
+                    $data.classList.add(isHidden);
+                    shake();
+                }
+            } else {
+                console.error('button clicked but no location is given');
+                shake();
+            }
+        });
+    </script>
+    </body>
+</html>
