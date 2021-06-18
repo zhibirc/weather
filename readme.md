@@ -7,7 +7,11 @@
 ## Containerize
 
 ```shell
-docker build --tag weather --no-cache .
+# build and deploy front-end
+docker build --tag weather-public --no-cache ./public
+# build and deploy back-end
+docker build --tag weather-server --no-cache ./server
+
 docker run --name weather -p 8080:80 -p 8081:8081 -d weather
 ```
 
