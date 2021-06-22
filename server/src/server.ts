@@ -1,4 +1,3 @@
-import path from 'path';
 import express, { Request, Response } from 'express';
 import * as dotenv from 'dotenv';
 import helmet from 'helmet';
@@ -7,10 +6,7 @@ import axios from 'axios';
 import { createClient as pexel } from 'pexels';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
-dotenv.config({
-    // use original .env
-    path: path.resolve(__dirname, '../.env')
-});
+dotenv.config();
 
 const {
     /** @see {@link https://openweathermap.org/ OpenWeather} */
@@ -29,8 +25,7 @@ if ( !WEATHER_PROVIDER_HOST || !WEATHER_PROVIDER_API_KEY ) {
 
 const app = express();
 const corsOptions = {
-    // reflect the client's origin
-    origin: true,
+    origin: '*',
     methods: ['OPTIONS', 'POST']
 }
 

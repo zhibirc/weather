@@ -6,7 +6,8 @@
     "scripts": {
         "start": "node dist/index.js",
         "build": "tsc -p .",
-        "develop": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts"
+        "develop": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts",
+        "env:templatify": "node build-scripts/env.js"
     },
     "keywords": [],
     "author": "",

@@ -1,8 +1,8 @@
 .idea
-.env
 
 public/node_modules
 public/dist
 
 server/node_modules
 server/dist
+server/.env
