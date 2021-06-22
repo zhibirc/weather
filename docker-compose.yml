@@ -1,6 +1,15 @@
 version: "3.9"
+
 services:
-    nginx:
-        build: .
+    front-end:
+        build: ./public
+        restart: unless-stopped
         ports:
-            - '8080:80'
+            -   8080:80
+
+    back-end:
+        build: ./server
+        restart: unless-stopped
+        ports:
+            -   8081:8081
+
