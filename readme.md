@@ -6,6 +6,15 @@
 
 ## Containerize
 
+One-Command Deployment:
+
+```shell
+# it calls "docker compose up"
+npm start
+```
+
+Build and setup manually:
+
 ```shell
 # build and deploy front-end
 docker build --tag weather-public --no-cache ./public
