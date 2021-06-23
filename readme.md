@@ -28,6 +28,13 @@ docker run --name weather-server --network weather-net -p 8081:8081 -d weather-s
 docker run --name weather-public --network weather-net -p 8080:80 -d weather-public
 ```
 
+For _public_ aka _front-end_ part the `nginx.conf` (default NGINX configuration file) is mounted from host system (`./public/nginx.conf`)
+for simplifying development process. Edit this file if needed and send the `HUP` signal to Docker to reload the NGINX configuration:
+
+```shell
+docker kill -s HUP <container_name>
+```
+
 ## Contributing
 
 I'm grateful to the community for contributing bug fixes and improvements. Read [checklist](./checklist.md) to learn how you can take part in improving.

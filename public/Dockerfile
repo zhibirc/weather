@@ -16,3 +16,5 @@ HEALTHCHECK --interval=10s --timeout=3s CMD wget -q -t1 -s 'http://localhost:80/
 
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /dist/* /usr/share/nginx/html
+# no need in case of using Docker Compose
+#COPY --from=build nginx.conf /etc/nginx/
