@@ -16,6 +16,3 @@ services:
         hostname: back-end
         build: ./server
         restart: unless-stopped
-        ports:
-            -   8081:8081
-

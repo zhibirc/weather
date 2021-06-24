@@ -19,26 +19,34 @@ Application called **Weather** has the following capabilities:
 
 ## Containerize
 
-One-Command Deployment:
+Choose suitable variant from the below and normally the Web UI should be available on **http://localhost:8080/**.
+
+1) One-Command Deployment (_without_ cloning the repo)
+
+```shell
+curl -L https://github.com/zhibirc/weather/archive/refs/tags/v1.0.tar.gz | tar xz && cd weather-1.0 && npm start
+```
+
+2) One-Command Deployment (after cloning the repo)
 
 ```shell
 # it calls "docker compose up --build"
 npm start
 ```
 
-Build and setup manually:
+3) Build and setup manually
 
 ```shell
 # build and deploy front-end
-docker build --tag weather-public --no-cache ./public
+docker build --tag front-end --no-cache ./public
 # build and deploy back-end
-docker build --tag weather-server --no-cache ./server
+docker build --tag back-end --no-cache ./server
 # create network to connect both parts
 docker network create weather-net
 # run server and add to existing network
-docker run --name weather-server --network weather-net -p 8081:8081 -d weather-server
+docker run --name back-end --network weather-net -p 8081:8081 -d back-end
 # run front-end and add to existing network
-docker run --name weather-public --network weather-net -p 8080:80 -d weather-public
+docker run --name front-end --network weather-net -p 8080:80 -d front-end
 ```
 
 For _public_ aka _front-end_ part the `nginx.conf` (default NGINX configuration file) is mounted from host system (`./public/nginx.conf`)
