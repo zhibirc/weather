@@ -42,3 +42,5 @@ I'm grateful to the community for contributing bug fixes and improvements. Read 
 ## License
 
 **weather** is [MIT licensed](./LICENSE)
+
+**favicon** author: &copy; 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji) | CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)

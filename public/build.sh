@@ -17,5 +17,8 @@ sed -i '' -e "s|<link rel=stylesheet href=./main.css>|<style>$(cat dist/main.css
 # shellcheck disable=SC2181
 [ $? -eq 0 ] && rm dist/main.css
 
+# copy favicon icon
+cp src/favicon.ico dist/favicon.ico
+
 # report and exit
 printf %s\\n "Build success" && exit 0
