@@ -2,7 +2,20 @@
 
 ![weather](./screenshot.png)
 
-## Usage
+<center>Full-Stack Web App (consists of a client side and a server part) as a playground for experiments and learning Docker/Docker Compose/NGINX etc.</center>
+
+## About
+
+Application called **Weather** has the following capabilities:
+
+- input field for location name, and a submit button in browser UI
+- user can specify some location name for getting weather for and press the button
+- back-end listen for POST HTTP request and validate user input from it
+- back-end communicates with two external services:
+    - [OpenWeather](https://openweathermap.org/) for retrieving weather for particular location
+    - [Pexels](https://www.pexels.com/api/) for retrieving image demonstrated the specific weather state
+- both weather and image metadata return by back-end to the browser
+- client logic parses the given JSON data and render it appropriately
 
 ## Containerize
 
