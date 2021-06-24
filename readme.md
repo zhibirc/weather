@@ -2,7 +2,7 @@
 
 ![weather](./screenshot.png)
 
-<center>Full-Stack Web App (consists of a client side and a server part) as a playground for experiments and learning Docker/Docker Compose/NGINX etc.</center>
+<p align="center">Full-Stack Web App (consists of a client side and a server part) as a playground for experiments and learning Docker/Docker Compose/NGINX etc.</p>
 
 ## About
 
