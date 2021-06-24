@@ -9,7 +9,7 @@
 One-Command Deployment:
 
 ```shell
-# it calls "docker compose up"
+# it calls "docker compose up --build"
 npm start
 ```
 
